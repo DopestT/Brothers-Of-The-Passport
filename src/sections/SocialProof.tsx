@@ -1,33 +1,30 @@
-import { useEffect, useRef, useState } from 'react';
-
-interface Metric {
-  value: string;
-  label: string;
-  sublabel?: string;
+export default function SocialProof() {
+  return (
+    <section className="py-16 px-4 sm:px-6 lg:px-8 bg-[#0f0f0f] border-y border-white/10">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-8 text-center">
+          <div>
+            <div className="text-4xl font-bold mb-2">5,000+</div>
+            <div className="text-gray-400">Global Brothers</div>
+          </div>
+          <div>
+            <div className="text-4xl font-bold mb-2">120+</div>
+            <div className="text-gray-400">Countries Covered</div>
+          </div>
+          <div>
+            <div className="text-4xl font-bold mb-2">$2M+</div>
+            <div className="text-gray-400">Saved Through Partnerships</div>
+          </div>
+        </div>
+        <div className="mt-12 text-center">
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+            "Travel smarter. Build leverage. Live larger. Join the brotherhood redefining modern masculinity through global citizenship."
+          </p>
+        </div>
+      </div>
+    </section>
+  )
 }
-
-const metrics: Metric[] = [
-  { value: '+80', label: 'COUNTRIES', sublabel: 'WORLDWIDE' },
-  { value: '+2,000', label: 'MEMBERS', sublabel: 'WORLDWIDE' },
-  { value: '$1M+', label: 'SAVED ON', sublabel: 'TRAVEL' },
-];
-
-const SocialProof = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.3 }
-    );
-
-    if (sectionRef.current) {
       observer.observe(sectionRef.current);
     }
 

@@ -1,33 +1,53 @@
-import { useEffect, useRef, useState } from 'react';
-import { BookOpen, Plane, Briefcase } from 'lucide-react';
-
-interface Step {
-  number: string;
-  icon: React.ReactNode;
-  title: string;
-  description: string;
+export default function HowItWorks() {
+  return (
+    <section id="how-it-works" className="py-20 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">How It Works</h2>
+        <p className="text-gray-400 text-center mb-16 max-w-2xl mx-auto">
+          Four simple steps to unlock global freedom
+        </p>
+        <div className="grid md:grid-cols-4 gap-8">
+          <div className="text-center">
+            <div className="w-16 h-16 bg-white text-black rounded-full flex items-center justify-center text-2xl font-bold mb-4 mx-auto">
+              1
+            </div>
+            <h3 className="text-xl font-bold mb-3">Apply</h3>
+            <p className="text-gray-400">
+              Submit your application. We maintain quality through selective membership.
+            </p>
+          </div>
+          <div className="text-center">
+            <div className="w-16 h-16 bg-white text-black rounded-full flex items-center justify-center text-2xl font-bold mb-4 mx-auto">
+              2
+            </div>
+            <h3 className="text-xl font-bold mb-3">Get Access</h3>
+            <p className="text-gray-400">
+              Instant access to guides, community, and exclusive partnerships.
+            </p>
+          </div>
+          <div className="text-center">
+            <div className="w-16 h-16 bg-white text-black rounded-full flex items-center justify-center text-2xl font-bold mb-4 mx-auto">
+              3
+            </div>
+            <h3 className="text-xl font-bold mb-3">Connect</h3>
+            <p className="text-gray-400">
+              Meet brothers worldwide. Attend events. Build real relationships.
+            </p>
+          </div>
+          <div className="text-center">
+            <div className="w-16 h-16 bg-white text-black rounded-full flex items-center justify-center text-2xl font-bold mb-4 mx-auto">
+              4
+            </div>
+            <h3 className="text-xl font-bold mb-3">Level Up</h3>
+            <p className="text-gray-400">
+              Use intelligence and leverage to build your global lifestyle.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
 }
-
-const steps: Step[] = [
-  {
-    number: '1',
-    icon: <BookOpen className="w-8 h-8" />,
-    title: 'LEARN',
-    description: 'Get country guides and actionable strategies.',
-  },
-  {
-    number: '2',
-    icon: <Plane className="w-8 h-8" />,
-    title: 'TRAVEL',
-    description: 'Leverage points and exclusive travel perks.',
-  },
-  {
-    number: '3',
-    icon: <Briefcase className="w-8 h-8" />,
-    title: 'BUILD',
-    description: 'Unlock new income streams and opportunities.',
-  },
-];
 
 const HowItWorks = () => {
   const sectionRef = useRef<HTMLDivElement>(null);

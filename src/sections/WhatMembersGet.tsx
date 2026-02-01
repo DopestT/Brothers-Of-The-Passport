@@ -1,53 +1,89 @@
-import { useEffect, useRef, useState } from 'react';
-import { Shield, Globe, CheckCircle, Plane, Settings, Cog } from 'lucide-react';
-
-interface Benefit {
-  icon: React.ReactNode;
-  title: string;
-  description: string;
-  isCTA?: boolean;
+export default function WhatMembersGet() {
+  return (
+    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#0f0f0f]">
+      <div className="max-w-7xl mx-auto">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">What Members Get</h2>
+        <p className="text-gray-400 text-center mb-16 max-w-2xl mx-auto">
+          Everything you need to build a location-independent life
+        </p>
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="bg-[#1a1a1a] p-8 rounded-lg border border-white/10">
+            <div className="w-12 h-12 bg-white/10 rounded-lg flex items-center justify-center mb-4">
+              <span className="text-2xl">🌍</span>
+            </div>
+            <h3 className="text-xl font-bold mb-3">Travel Intelligence</h3>
+            <ul className="space-y-2 text-gray-400">
+              <li>• Visa strategies for 120+ countries</li>
+              <li>• Banking and finance guides</li>
+              <li>• Tax optimization playbooks</li>
+              <li>• Cost of living databases</li>
+            </ul>
+          </div>
+          <div className="bg-[#1a1a1a] p-8 rounded-lg border border-white/10">
+            <div className="w-12 h-12 bg-white/10 rounded-lg flex items-center justify-center mb-4">
+              <span className="text-2xl">🤝</span>
+            </div>
+            <h3 className="text-xl font-bold mb-3">Global Community</h3>
+            <ul className="space-y-2 text-gray-400">
+              <li>• Private member network</li>
+              <li>• City-specific channels</li>
+              <li>• Mentorship programs</li>
+              <li>• Accountability partners</li>
+            </ul>
+          </div>
+          <div className="bg-[#1a1a1a] p-8 rounded-lg border border-white/10">
+            <div className="w-12 h-12 bg-white/10 rounded-lg flex items-center justify-center mb-4">
+              <span className="text-2xl">💼</span>
+            </div>
+            <h3 className="text-xl font-bold mb-3">Exclusive Deals</h3>
+            <ul className="space-y-2 text-gray-400">
+              <li>• Premium travel discounts</li>
+              <li>• Hotel partnerships</li>
+              <li>• Banking fee waivers</li>
+              <li>• Concierge services</li>
+            </ul>
+          </div>
+          <div className="bg-[#1a1a1a] p-8 rounded-lg border border-white/10">
+            <div className="w-12 h-12 bg-white/10 rounded-lg flex items-center justify-center mb-4">
+              <span className="text-2xl">📍</span>
+            </div>
+            <h3 className="text-xl font-bold mb-3">City Guides</h3>
+            <ul className="space-y-2 text-gray-400">
+              <li>• Deep-dive destination guides</li>
+              <li>• Local insider knowledge</li>
+              <li>• Safety and logistics intel</li>
+              <li>• Cost breakdowns</li>
+            </ul>
+          </div>
+          <div className="bg-[#1a1a1a] p-8 rounded-lg border border-white/10">
+            <div className="w-12 h-12 bg-white/10 rounded-lg flex items-center justify-center mb-4">
+              <span className="text-2xl">🎯</span>
+            </div>
+            <h3 className="text-xl font-bold mb-3">Events & Meetups</h3>
+            <ul className="space-y-2 text-gray-400">
+              <li>• Quarterly global summits</li>
+              <li>• Local city meetups</li>
+              <li>• Skill-building workshops</li>
+              <li>• Adventure experiences</li>
+            </ul>
+          </div>
+          <div className="bg-[#1a1a1a] p-8 rounded-lg border border-white/10">
+            <div className="w-12 h-12 bg-white/10 rounded-lg flex items-center justify-center mb-4">
+              <span className="text-2xl">🚀</span>
+            </div>
+            <h3 className="text-xl font-bold mb-3">Business Resources</h3>
+            <ul className="space-y-2 text-gray-400">
+              <li>• Remote work strategies</li>
+              <li>• International incorporation</li>
+              <li>• Payment processor guides</li>
+              <li>• Contractor networks</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
 }
-
-const benefits: Benefit[] = [
-  {
-    icon: <Shield className="w-6 h-6" />,
-    title: 'Private Community',
-    description: 'Join an invite-only network of driven men.',
-  },
-  {
-    icon: <Globe className="w-6 h-6" />,
-    title: 'Country Guides',
-    description: 'Exclusive, detailed assessments of each country.',
-  },
-  {
-    icon: <CheckCircle className="w-6 h-6" />,
-    title: 'Verified Resources',
-    description: 'Access vetted professionals, lawyers, tax advisors.',
-  },
-  {
-    icon: <Plane className="w-6 h-6" />,
-    title: 'Deals & Booking Perks',
-    description: 'Save on flights, stays, insurance, and more.',
-  },
-  {
-    icon: <Settings className="w-6 h-6" />,
-    title: 'Automation Tools',
-    description: 'Streamline setting up a nomadic life.',
-  },
-  {
-    icon: <Cog className="w-6 h-6" />,
-    title: 'BOOK TRAVEL',
-    description: '',
-    isCTA: true,
-  },
-];
-
-const WhatMembersGet = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);

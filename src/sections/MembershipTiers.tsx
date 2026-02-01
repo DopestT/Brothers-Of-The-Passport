@@ -1,53 +1,117 @@
-import { useEffect, useRef, useState } from 'react';
-import { Check } from 'lucide-react';
+export default function MembershipTiers() {
+  return (
+    <section id="membership" className="py-20 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-4">Membership Tiers</h2>
+        <p className="text-gray-400 text-center mb-16 max-w-2xl mx-auto">
+          Choose the level that matches your ambition
+        </p>
+        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="bg-[#0f0f0f] border border-white/10 rounded-lg p-8">
+            <h3 className="text-2xl font-bold mb-2">Explorer</h3>
+            <div className="text-3xl font-bold mb-6">Free</div>
+            <ul className="space-y-4 mb-8 text-gray-400">
+              <li className="flex items-start">
+                <span className="mr-2">✓</span>
+                <span>Access to community forums</span>
+              </li>
+              <li className="flex items-start">
+                <span className="mr-2">✓</span>
+                <span>Basic city guides</span>
+              </li>
+              <li className="flex items-start">
+                <span className="mr-2">✓</span>
+                <span>Monthly newsletter</span>
+              </li>
+              <li className="flex items-start">
+                <span className="mr-2">✓</span>
+                <span>Event announcements</span>
+              </li>
+            </ul>
+            <a href="#join" className="block w-full py-3 text-center border-2 border-white/20 rounded-md hover:bg-white/10 transition-colors font-medium">
+              Get Started
+            </a>
+          </div>
 
-interface Tier {
-  name: string;
-  price: string;
-  period: string;
-  description: string;
-  features: string[];
-  cta: string;
-  highlighted?: boolean;
+          <div className="bg-[#0f0f0f] border-2 border-white rounded-lg p-8 relative">
+            <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-white text-black px-4 py-1 rounded-full text-sm font-bold">
+              MOST POPULAR
+            </div>
+            <h3 className="text-2xl font-bold mb-2">Citizen</h3>
+            <div className="text-3xl font-bold mb-6">
+              $49<span className="text-lg text-gray-400">/month</span>
+            </div>
+            <ul className="space-y-4 mb-8">
+              <li className="flex items-start">
+                <span className="mr-2">✓</span>
+                <span>Everything in Explorer</span>
+              </li>
+              <li className="flex items-start">
+                <span className="mr-2">✓</span>
+                <span>Full travel intelligence library</span>
+              </li>
+              <li className="flex items-start">
+                <span className="mr-2">✓</span>
+                <span>Private member network</span>
+              </li>
+              <li className="flex items-start">
+                <span className="mr-2">✓</span>
+                <span>Exclusive partnership deals</span>
+              </li>
+              <li className="flex items-start">
+                <span className="mr-2">✓</span>
+                <span>Quarterly virtual events</span>
+              </li>
+              <li className="flex items-start">
+                <span className="mr-2">✓</span>
+                <span>Direct messaging</span>
+              </li>
+            </ul>
+            <a href="#join" className="block w-full py-3 text-center bg-white text-black rounded-md hover:bg-gray-200 transition-colors font-semibold">
+              Join Now
+            </a>
+          </div>
+
+          <div className="bg-[#0f0f0f] border border-white/10 rounded-lg p-8">
+            <h3 className="text-2xl font-bold mb-2">Elite</h3>
+            <div className="text-3xl font-bold mb-6">
+              $199<span className="text-lg text-gray-400">/month</span>
+            </div>
+            <ul className="space-y-4 mb-8">
+              <li className="flex items-start">
+                <span className="mr-2">✓</span>
+                <span>Everything in Citizen</span>
+              </li>
+              <li className="flex items-start">
+                <span className="mr-2">✓</span>
+                <span>Personal concierge service</span>
+              </li>
+              <li className="flex items-start">
+                <span className="mr-2">✓</span>
+                <span>1-on-1 strategy calls</span>
+              </li>
+              <li className="flex items-start">
+                <span className="mr-2">✓</span>
+                <span>VIP event access</span>
+              </li>
+              <li className="flex items-start">
+                <span className="mr-2">✓</span>
+                <span>Premium partner benefits</span>
+              </li>
+              <li className="flex items-start">
+                <span className="mr-2">✓</span>
+                <span>Priority support</span>
+              </li>
+            </ul>
+            <a href="#join" className="block w-full py-3 text-center border-2 border-white text-white rounded-md hover:bg-white hover:text-black transition-colors font-semibold">
+              Upgrade to Elite
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
 }
-
-const tiers: Tier[] = [
-  {
-    name: 'PLUS',
-    price: '$49',
-    period: '/month',
-    description: 'Starter Membership',
-    features: ['Country Guides Access', 'Community Forum', 'Monthly Newsletter', 'Basic Perks'],
-    cta: 'GET STARTED',
-  },
-  {
-    name: 'ELITE',
-    price: '$99',
-    period: '/month',
-    description: 'VIP Membership',
-    features: ['Everything in Plus', 'Priority Support', 'Exclusive Deals', '1-on-1 Consultation', 'VIP Events Access'],
-    cta: 'APPLY NOW',
-    highlighted: true,
-  },
-];
-
-const airlineLogos = [
-  { name: 'Emirates', width: 'w-20' },
-  { name: 'Air France', width: 'w-20' },
-  { name: 'Qatar', width: 'w-16' },
-];
-
-const MembershipTiers = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
-        }
       },
       { threshold: 0.15 }
     );

@@ -1,53 +1,27 @@
-import { useEffect, useRef } from 'react';
-
-const Hero = () => {
-  const heroRef = useRef<HTMLDivElement>(null);
-  const imageRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (imageRef.current) {
-        const scrollY = window.scrollY;
-        const parallaxValue = scrollY * 0.4;
-        imageRef.current.style.transform = `translateY(${parallaxValue}px) scale(1.1)`;
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
+export default function Hero() {
   return (
-    <section
-      ref={heroRef}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
-    >
-      {/* Background Image with Parallax */}
-      <div
-        ref={imageRef}
-        className="absolute inset-0 w-full h-full transition-transform duration-100"
-        style={{ transform: 'scale(1.1)' }}
-      >
-        <img
-          src="/hero-bg.jpg"
-          alt="Global night map"
-          className="w-full h-full object-cover"
-        />
-        {/* Dark overlay gradient */}
-        <div className="absolute inset-0 bg-gradient-to-b from-charcoal/60 via-charcoal/40 to-charcoal" />
-        {/* Additional vignette */}
-        <div className="absolute inset-0 bg-radial-gradient pointer-events-none" 
-          style={{
-            background: 'radial-gradient(ellipse at center, transparent 0%, rgba(15,15,15,0.4) 100%)'
-          }}
-        />
+    <section id="home" className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-b from-black via-[#0a0a0a] to-[#0a0a0a]"></div>
+      <div className="relative max-w-5xl mx-auto text-center">
+        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+          Build Global Leverage.<br />
+          <span className="text-gray-400">Live Without Limits.</span>
+        </h1>
+        <p className="text-xl md:text-2xl text-gray-400 mb-12 max-w-3xl mx-auto leading-relaxed">
+          Join thousands of ambitious men building location-independent lives through travel intelligence, global networks, and shared leverage.
+        </p>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <a href="#join" className="px-8 py-4 bg-white text-black rounded-md hover:bg-gray-200 transition-colors font-semibold text-lg w-full sm:w-auto text-center">
+            Apply Now
+          </a>
+          <a href="#how-it-works" className="px-8 py-4 bg-transparent border-2 border-white text-white rounded-md hover:bg-white hover:text-black transition-colors font-semibold text-lg w-full sm:w-auto text-center">
+            Learn More
+          </a>
+        </div>
+      </div>
+    </section>
+  )
+}
       </div>
 
       {/* Passport Stamp Decorations */}
